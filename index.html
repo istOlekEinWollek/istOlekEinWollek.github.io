@@ -40,7 +40,10 @@
 				var startDate = new Date(); //What date to start counting from
 				var now = Math.floor(Date.now()/1000); //Current timestamp in seconds
 				var clockStart = now - startDate.getTime()/1000; //What to set the clock at when page loads
-
+				var opts = {
+					clockFace: 'DailyCounter',
+					countdown: true
+				};
 				var clock2 = $('.your-clock').FlipClock(opts).setTime(clockStart); //Start clock
 				setTimeout(() => {
 					document.querySelector(".animate").classList.add("show");
