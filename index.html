@@ -36,7 +36,40 @@
 			</h2>
 			<br>
 			<div class="your-clock"></div>
+			<br>
+			<h3>Folgende Personen finden, dass Olek ein Wollek ist. <span id="button">Du Auch?</span></h3>
+			<ol id="list">
+				
+			</ol>
 			<script>
+				const key = "qtgwe";
+				const list = document.querySelector("#list");
+				$.get("https://api.myjson.com/bins/"+key, function(data, textStatus, jqXHR) {
+					console.log(data);
+					data.forEach(name => {
+						let li = list.appendChild(document.createElement("LI"));
+						li.innerText = name;
+					});
+					document.querySelector("#button").addEventListener("click", () => {
+					const person = prompt("Wie lautet dein Name?");
+					if(person) {
+						data.push(person);
+						
+						$.ajax({
+							url:"https://api.myjson.com/bins/:id",
+							type:"PUT",
+							data: "{"+key+":"+JSON.stringify(data)+"}",
+							contentType:"application/json; charset=utf-8",
+							dataType:"json",
+							success: function(data, textStatus, jqXHR){
+								let li = list.appendChild(document.createElement("LI"));
+								li.innerText = person;
+							}
+						});       
+					}
+				});
+				});
+				
 				var startDate = new Date("Thu Dec 6 2018 14:00:00 GMT+0100"); //What date to start counting from
 				var now = Math.floor(Date.now()/1000); //Current timestamp in seconds
 				var clockStart = now - startDate.getTime()/1000; //What to set the clock at when page loads
