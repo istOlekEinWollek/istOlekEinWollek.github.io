@@ -37,12 +37,12 @@
 			<br>
 			<div class="your-clock"></div>
 			<script>
-				var startDate = new Date(); //What date to start counting from
+				var startDate = new Date("Thu Dec 6 2018 14:00:00 GMT+0100"); //What date to start counting from
 				var now = Math.floor(Date.now()/1000); //Current timestamp in seconds
 				var clockStart = now - startDate.getTime()/1000; //What to set the clock at when page loads
 				var opts = {
 					clockFace: 'DailyCounter',
-					countdown: true
+					countdown: false
 				};
 				var clock2 = $('.your-clock').FlipClock(opts).setTime(clockStart); //Start clock
 				setTimeout(() => {
