@@ -2,15 +2,37 @@
 	<head>
 		<!-- Compiled and minified CSS -->
 		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+		<link rel="stylesheet" href="http://flipclockjs.com/_themes/flipclockjs/css/flipclock.css">
 		<!-- Compiled and minified JavaScript -->
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="http://flipclockjs.com/_themes/flipclockjs/js/flipclock/flipclock.js"></script>
+		
+		<style>
+			body {
+				display:flex;
+				justify-content:center;
+				align-items:center;
+				height:100vh;
+				text-align: center;
+			}
+		</style>
 	</head>
-	<body style="display:flex;justify-content:center;align-items:center;height:100vh;">
+	<body>
 		<div>
 			<h1>Ist Olek ein Wollek?</h1>
 			<h2>
 				<strong>JA</strong>
 			</h2>
+			<br>
+			<div class="your-clock"></div>
+			<script>
+				var today = new Date();
+				today = today.getTime()/1000;
+				var clock = $('.your-clock').FlipClock({
+					clockFace: 'DailyCounter'
+				});
+			</script>
 		</div>
 	</body>
 </html>
