@@ -7,7 +7,7 @@
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
 		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 		<script src="http://flipclockjs.com/_themes/flipclockjs/js/flipclock/flipclock.js"></script>
-		
+		<title>Ist Olek ein Wollek?</title>
 		<style>
 			body {
 				display:flex;
@@ -27,11 +27,11 @@
 			<br>
 			<div class="your-clock"></div>
 			<script>
-				var today = new Date();
-				today = today.getTime()/1000;
-				var clock = $('.your-clock').FlipClock({
-					clockFace: 'DailyCounter'
-				});
+				var startDate = new Date(); //What date to start counting from
+				var now = Math.floor(Date.now()/1000); //Current timestamp in seconds
+				var clockStart = now - startDate.getTime()/1000; //What to set the clock at when page loads
+
+				var clock2 = $('.your-clock').FlipClock(opts).setTime(clockStart); //Start clock
 			</script>
 		</div>
 	</body>
