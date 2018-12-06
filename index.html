@@ -16,10 +16,20 @@
 				height:100vh;
 				text-align: center;
 			}
+			.animate {
+				transition: all 2s ease;
+				opacity: 0;
+				transform: scale(0);
+			}
+			
+			.show {
+				opacity: 1;
+				transform: scale(1);
+			}
 		</style>
 	</head>
 	<body>
-		<div>
+		<div class="animate">
 			<h1>Ist Olek ein Wollek?</h1>
 			<h2>
 				<strong>JA</strong>
@@ -32,6 +42,9 @@
 				var clockStart = now - startDate.getTime()/1000; //What to set the clock at when page loads
 
 				var clock2 = $('.your-clock').FlipClock(opts).setTime(clockStart); //Start clock
+				setTimeout(() => {
+					document.querySelector(".animate").classList.add("show");
+				},1000);
 			</script>
 		</div>
 	</body>
